@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050510">
+
+<title>Orion.Bots — Bots para Discord</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#050510;
+    --card:#0d0d1c;
+    --cyan:#00eaff;
+    --purple:#8b5cf6;
+    --pink:#ff35d0;
+    --green:#4dff9a;
+    --white:#f7f8ff;
+    --muted:#9ca3b7;
+    --border:rgba(255,255,255,.1);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(circle at 15% 10%,rgba(0,234,255,.13),transparent 28%),
+        radial-gradient(circle at 85% 20%,rgba(139,92,246,.16),transparent 30%),
+        radial-gradient(circle at 50% 90%,rgba(255,53,208,.08),transparent 30%),
+        var(--bg);
+    color:var(--white);
+    font-family:Arial,Helvetica,sans-serif;
+    min-height:100vh;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+    opacity:.2;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:40px 40px;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+}
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    background:rgba(5,5,16,.75);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);
+}
+
+.nav{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:900;
+    font-size:19px;
+}
+
+.logo-orb{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:1px solid var(--cyan);
+    box-shadow:
+        0 0 20px rgba(0,234,255,.35),
+        inset 0 0 15px rgba(139,92,246,.5);
+    position:relative;
+}
+
+.logo-orb::after{
+    content:"";
+    width:9px;
+    height:9px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 15px var(--cyan);
+}
+
+.logo span{
+    background:linear-gradient(90deg,var(--cyan),white,var(--purple));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+nav{
+    display:flex;
+    gap:22px;
+    color:#cdd2e4;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:var(--cyan);
+}
+
+.menu{
+    display:none;
+    background:none;
+    color:white;
+    border:0;
+    font-size:27px;
+}
+
+.hero{
+    min-height:100vh;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding:120px 0 70px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 14px;
+    border:1px solid rgba(0,234,255,.25);
+    border-radius:50px;
+    color:#bafaff;
+    background:rgba(0,234,255,.05);
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:24px;
+}
+
+.hero h1{
+    font-size:clamp(55px,10vw,100px);
+    letter-spacing:-5px;
+    line-height:.95;
+    background:linear-gradient(100deg,#fff,var(--cyan),#bd8cff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:700px;
+    margin:25px auto;
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.7;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.05);
+    color:white;
+    padding:13px 20px;
+    border-radius:13px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    border-color:rgba(0,234,255,.5);
+}
+
+.primary{
+    border:0;
+    background:linear-gradient(100deg,var(--cyan),#3b82f6,var(--purple));
+}
+
+section{
+    padding:90px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title small{
+    color:var(--cyan);
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.section-title h2{
+    font-size:42px;
+    margin-top:8px;
+}
+
+.section-title p{
+    color:var(--muted);
+    margin-top:10px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.card{
+    background:rgba(13,13,28,.8);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:25px;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    transition:.3s;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(0,234,255,.3);
+}
+
+.icon{
+    width:50px;
+    height:50px;
+    display:grid;
+    place-items:center;
+    border-radius:15px;
+    background:rgba(0,234,255,.08);
+    font-size:23px;
+    margin-bottom:17px;
+}
+
+.card h3{
+    font-size:21px;
+}
+
+.card p{
+    color:var(--muted);
+    line-height:1.6;
+    margin:10px 0 18px;
+}
+
+.features{
+    list-style:none;
+    display:grid;
+    gap:9px;
+    margin-bottom:22px;
+    color:#dfe3f1;
+    font-size:14px;
+}
+
+.features li::before{
+    content:"✓";
+    color:var(--cyan);
+    font-weight:bold;
+    margin-right:8px;
+}
+
+.price{
+    font-size:30px;
+    font-weight:900;
+    margin-bottom:18px;
+}
+
+.card .btn{
+    width:100%;
+}
+
+.popular{
+    float:right;
+    font-size:10px;
+    background:rgba(139,92,246,.2);
+    color:#d9caff;
+    border:1px solid rgba(139,92,246,.3);
+    border-radius:20px;
+    padding:6px 9px;
+}
+
+.custom{
+    border-color:rgba(255,53,208,.3);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,53,208,.07),
+            rgba(139,92,246,.06)
+        );
+}
+
+.custom .icon{
+    background:rgba(255,53,208,.1);
+}
+
+.custom .price{
+    background:linear-gradient(90deg,var(--pink),var(--cyan));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.table-box{
+    overflow:auto;
+    border:1px solid var(--border);
+    border-radius:18px;
+}
+
+table{
+    width:100%;
+    min-width:650px;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:16px;
+    text-align:center;
+    border-bottom:1px solid var(--border);
+}
+
+th{
+    color:var(--cyan);
+    background:rgba(0,234,255,.04);
+}
+
+.yes{
+    color:var(--green);
+    font-weight:bold;
+}
+
+.checkout{
+    max-width:720px;
+    margin:auto;
+    background:rgba(13,13,28,.85);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:27px;
+}
+
+.form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.field{
+    display:grid;
+    gap:7px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+label{
+    font-size:13px;
+    font-weight:bold;
+}
+
+input,select,textarea{
+    width:100%;
+    background:#080812;
+    color:white;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:13px;
+    outline:none;
+}
+
+input:focus,select:focus,textarea:focus{
+    border-color:var(--cyan);
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.summary{
+    margin-top:20px;
+    padding:16px;
+    background:rgba(0,234,255,.035);
+    border:1px solid rgba(0,234,255,.13);
+    border-radius:15px;
+}
+
+.summary div{
+    display:flex;
+    justify-content:space-between;
+    padding:5px 0;
+}
+
+.total{
+    border-top:1px solid var(--border);
+    margin-top:8px;
+    padding-top:12px!important;
+    font-size:19px;
+}
+
+.pix{
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+}
+
+.pix-key{
+    margin:18px 0;
+    padding:17px;
+    background:#07070f;
+    border:1px dashed rgba(0,234,255,.4);
+    border-radius:14px;
+    color:#9efaff;
+    font-family:monospace;
+    word-break:break-all;
+}
+
+.notice{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+}
+
+.steps{
+    max-width:700px;
+    margin:30px auto 0;
+    display:grid;
+    gap:12px;
+}
+
+.step{
+    display:flex;
+    gap:13px;
+    padding:15px;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:rgba(255,255,255,.025);
+    text-align:left;
+}
+
+.number{
+    min-width:30px;
+    height:30px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    color:var(--cyan);
+    background:rgba(0,234,255,.08);
+}
+
+footer{
+    border-top:1px solid var(--border);
+    padding:35px 0;
+    color:#777d92;
+    font-size:13px;
+}
+
+.footer{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(8px);
+    place-items:center;
+    padding:20px;
+}
+
+.modal.active{
+    display:grid;
+}
+
+.modal-content{
+    width:min(500px,100%);
+    background:#0b0b17;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:25px;
+}
+
+.close{
+    float:right;
+    border:0;
+    background:none;
+    color:white;
+    font-size:27px;
+    cursor:pointer;
+}
+
+.order-id{
+    color:var(--cyan);
+    font-family:monospace;
+    font-size:22px;
+    margin:20px 0;
+}
+
+.toast{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translate(-50%,20px);
+    opacity:0;
+    pointer-events:none;
+    background:#111122;
+    border:1px solid rgba(0,234,255,.3);
+    padding:13px 18px;
+    border-radius:12px;
+    transition:.3s;
+    z-index:3000;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+@media(max-width:800px){
+
+    nav{
+        display:none;
+    }
+
+    nav.open{
+        display:flex;
+        position:absolute;
+        top:70px;
+        left:4%;
+        right:4%;
+        flex-direction:column;
+        padding:18px;
+        background:#090914;
+        border:1px solid var(--border);
+        border-radius:16px;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .form{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a href="#inicio" class="logo">
+<div class="logo-orb"></div>
+<span>ORION.BOTS</span>
+</a>
+
+<button class="menu" id="menu">☰</button>
+
+<nav id="nav">
+<a href="#inicio">Início</a>
+<a href="#bots">Bots</a>
+<a href="#planos">Planos</a>
+<a href="#comprar">Comprar</a>
+<a href="#pix">PIX</a>
+</nav>
+
+</div>
+
+</header>
+
+
+<section class="hero" id="inicio">
+
+<div class="container">
+
+<div class="badge">
+● ORION.BOTS ONLINE
+</div>
+
+<h1>ORION.BOTS</h1>
+
+<p>
+Bots para Discord criados para deixar
+seu servidor mais organizado, seguro,
+divertido e personalizado.
+</p>
+
+<div class="buttons">
+
+<a class="btn primary" href="#bots">
+Ver bots →
+</a>
+
+<a class="btn" href="#comprar">
+Comprar agora
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="bots">
+
+<div class="container">
+
+<div class="section-title">
+
+<small>CATÁLOGO</small>
+
+<h2>Nossos Bots</h2>
+
+<p>
+Escolha uma solução pronta ou crie seu próprio bot.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div>
+<div class="icon">🛡️</div>
+
+<h3>Orion Moderation</h3>
+
+<p>
+Ferramentas de moderação essenciais para manter seu servidor organizado.
+</p>
+
+<ul class="features">
+<li>Ban e kick</li>
+<li>Warn</li>
+<li>Anti-spam</li>
+<li>Logs básicos</li>
+</ul>
+</div>
+
+<div>
+<div class="price">
+R$ 24,35
+</div>
+
+<button
+class="btn primary buy"
+data-product="Orion Moderation">
+Comprar
+</button>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div>
+<div class="icon">💰</div>
+
+<h3>Orion Economy</h3>
+
+<p>
+Sistema completo de economia para engajar e movimentar sua comunidade.
+</p>
+
+<ul class="features">
+<li>Moedas virtuais</li>
+<li>Ranking de usuários</li>
+<li>Loja virtual integrável</li>
+<li>Trabalhos e minigames</li>
+</ul>
+</div>
+
+<div>
+<div class="price">
+R$ 38,53
+</div>
+
+<button
+class="btn primary buy"
+data-product="Orion Economy">
+Comprar
+</button>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div>
+<div>
+<span class="popular">TUDO EM UM</span>
+<div class="icon">⚡</div>
+</div>
+
+<h3>Orion Premium</h3>
+
+<p>
+O pacote definitivo! Inclui todas as funções de Moderação e Economia + recursos avançados.
+</p>
+
+<ul class="features">
+<li><strong>Tudo do Orion Moderation</strong></li>
+<li><strong>Tudo do Orion Economy</strong></li>
+<li>Sistema de Tickets</li>
+<li>Logs Avançados de Ações</li>
+<li>Personalização Completa</li>
+</ul>
+</div>
+
+<div>
+<div class="price">
+R$ 70,45
+</div>
+
+<button
+class="btn primary buy"
+data-product="Orion Premium">
+Comprar
+</button>
+</div>
+
+</div>
+
+
+<div class="card custom">
+
+<div>
+<div class="icon">🤖</div>
+
+<h3>Robô personalizado</h3>
+
+<p>
+<strong>Você manda a ideia, eu crio!</strong>
+Um bot personalizado de acordo com as necessidades exatas do seu servidor.
+</p>
+
+<ul class="features">
+<li>Bot feito sob medida</li>
+<li>Funções exclusivas</li>
+<li>Comandos personalizados</li>
+<li>Configuração total do servidor</li>
+<li>Suporte e desenvolvimento dedicado</li>
+</ul>
+</div>
+
+<div>
+<div class="price">
+R$ 45,38
+</div>
+
+<button
+class="btn primary buy"
+data-product="Robô personalizado">
+Quero meu robô →
+</button>
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="planos">
+
+<div class="container">
+
+<div class="section-title">
+
+<small>COMPARAÇÃO</small>
+
+<h2>Planos</h2>
+
+<p>
+Veja o que cada pacote entrega para o seu servidor.
+</p>
+
+</div>
+
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Recurso</th>
+<th>Moderation</th>
+<th>Economy</th>
+<th>Premium (Tudo em 1)</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Moderação (Ban, Kick, Warn, Anti-Spam)</td>
+<td class="yes">✓</td>
+<td>—</td>
+<td class="yes">✓</td>
+</tr>
+
+<tr>
+<td>Economia (Moedas, Loja, Rank, Jobs)</td>
+<td>—</td>
+<td class="yes">✓</td>
+<td class="yes">✓</td>
+</tr>
+
+<tr>
+<td>Tickets de Suporte</td>
+<td>—</td>
+<td>—</td>
+<td class="yes">✓</td>
+</tr>
+
+<tr>
+<td>Logs</td>
+<td>Básico</td>
+<td>—</td>
+<td class="yes">Avançado</td>
+</tr>
+
+<tr>
+<td>Personalização</td>
+<td>Básica</td>
+<td>Básica</td>
+<td class="yes">Completa</td>
+</tr>
+
+<tr>
+<td>Preço</td>
+<td>R$ 24,35</td>
+<td>R$ 38,53</td>
+<td>R$ 70,45</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="comprar">
+
+<div class="container">
+
+<div class="section-title">
+
+<small>CHECKOUT</small>
+
+<h2>Faça seu pedido</h2>
+
+<p>
+Escolha seu produto e envie seus dados.
+</p>
+
+</div>
+
+
+<form class="checkout" id="form">
+
+<div class="form">
+
+
+<div class="field">
+
+<label>Nome</label>
+
+<input
+id="name"
+required
+placeholder="Seu nome">
+
+</div>
+
+
+<div class="field">
+
+<label>Discord</label>
+
+<input
+id="discord"
+required
+placeholder="seu_usuario">
+
+</div>
+
+
+<div class="field full">
+
+<label>E-mail</label>
+
+<input
+id="email"
+type="email"
+required
+placeholder="voce@email.com">
+
+</div>
+
+
+<div class="field full">
+
+<label>Produto</label>
+
+<select id="product">
+
+<option
+value="Orion Moderation"
+data-price="24.35">
+
+Orion Moderation — R$ 24,35
+
+</option>
+
+
+<option
+value="Orion Economy"
+data-price="38.53">
+
+Orion Economy — R$ 38,53
+
+</option>
+
+
+<option
+value="Orion Premium"
+data-price="70.45">
+
+Orion Premium (Completo) — R$ 70,45
+
+</option>
+
+
+<option
+value="Robô personalizado"
+data-price="45.38">
+
+Robô personalizado — R$ 45,38 (Sob consulta)
+
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field full">
+
+<label>
+Explique o que você quer no seu bot
+</label>
+
+<textarea
+id="notes"
+placeholder="Exemplo: quero um bot de tickets, moderação, sistema de cargos, economia..."></textarea>
+
+</div>
+
+
+</div>
+
+
+<div class="summary">
+
+<div>
+
+<span>Produto</span>
+
+<strong id="sumProduct">
+Orion Moderation
+</strong>
+
+</div>
+
+
+<div>
+
+<span>Preço</span>
+
+<strong id="sumPrice">
+R$ 24,35
+</strong>
+
+</div>
+
+
+<div class="total">
+
+<span>Total</span>
+
+<strong id="sumTotal">
+R$ 24,35
+</strong>
+
+</div>
+
+</div>
+
+
+<button
+class="btn primary"
+style="width:100%;margin-top:16px">
+
+Gerar pedido →
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+<section id="pix">
+
+<div class="container">
+
+<div class="section-title">
+
+<small>PAGAMENTO</small>
+
+<h2>Pagamento via PIX</h2>
+
+<p>
+Após criar seu pedido, faça o pagamento.
+</p>
+
+</div>
+
+
+<div class="card pix">
+
+<h3>
+Chave PIX da Orion.Bots
+</h3>
+
+
+<div class="pix-key" id="pixDisplay">
+19993788111
+</div>
+
+
+<button
+class="btn primary"
+id="copyPix">
+
+Copiar chave PIX
+
+</button>
+
+
+<p
+class="notice"
+style="margin-top:18px">
+
+Após realizar o pagamento,
+envie o comprovante junto com
+o número do pedido pelo suporte.
+
+</p>
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<div class="number">
+1
+</div>
+
+<div>
+
+<strong>
+Crie seu pedido
+</strong>
+
+<p class="notice">
+Escolha o produto e informe seus dados.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+2
+</div>
+
+<div>
+
+<strong>
+Copie a chave PIX
+</strong>
+
+<p class="notice">
+Use o botão acima.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+3
+</div>
+
+<div>
+
+<strong>
+Faça o pagamento
+</strong>
+
+<p class="notice">
+Realize o PIX pelo aplicativo do seu banco.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+4
+</div>
+
+<div>
+
+<strong>
+Envie o comprovante
+</strong>
+
+<p class="notice">
+Envie o comprovante e o número do pedido.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="container footer">
+
+<div>
+
+<strong>
+ORION.BOTS
+</strong>
+
+<br>
+
+Bots para Discord.
+
+</div>
+
+
+<div>
+
+© 2026 Orion.Bots
+
+</div>
+
+</div>
+
+</footer>
+
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<button
+class="close"
+id="close">
+×
+</button>
+
+
+<h2>
+Pedido criado!
+</h2>
+
+
+<p class="notice">
+Guarde o número do seu pedido.
+</p>
+
+
+<div
+class="order-id"
+id="orderId">
+</div>
+
+
+<p id="orderInfo">
+</p>
+
+
+<br>
+
+
+<button
+class="btn primary"
+id="paymentButton">
+
+Ir para PIX
+
+</button>
+
+</div>
+
+</div>
+
+
+<div
+class="toast"
+id="toast">
+</div>
+
+
+<script>
+
+/* =================================
+   CONFIGURAÇÃO
+================================= */
+
+const PIX_ORION = "19993788111";
+
+
+/* =================================
+   MENU
+================================= */
+
+const menu =
+document.getElementById("menu");
+
+const nav =
+document.getElementById("nav");
+
+menu.onclick = () => {
+
+    nav.classList.toggle("open");
+
+};
+
+
+/* =================================
+   PREÇOS
+================================= */
+
+const product =
+document.getElementById("product");
+
+const sumProduct =
+document.getElementById("sumProduct");
+
+const sumPrice =
+document.getElementById("sumPrice");
+
+const sumTotal =
+document.getElementById("sumTotal");
+
+
+function money(value){
+
+    return Number(value).toLocaleString(
+        "pt-BR",
+        {
+            style:"currency",
+            currency:"BRL"
+        }
+    );
+
+}
+
+
+function updatePrice(){
+
+    const option =
+    product.options[
+        product.selectedIndex
+    ];
+
+    const price =
+    option.dataset.price;
+
+    sumProduct.textContent =
+    option.value;
+
+    sumPrice.textContent =
+    money(price);
+
+    sumTotal.textContent =
+    money(price);
+
+}
+
+
+product.onchange =
+updatePrice;
+
+
+/* =================================
+   BOTÕES DE COMPRA
+================================= */
+
+document
+.querySelectorAll(".buy")
+.forEach(button => {
+
+    button.onclick = () => {
+
+        product.value =
+        button.dataset.product;
+
+        updatePrice();
+
+        document
+        .getElementById("comprar")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+    };
+
+});
+
+
+/* =================================
+   PIX
+================================= */
+
+document
+.getElementById("pixDisplay")
+.textContent =
+PIX_ORION;
+
+
+document
+.getElementById("copyPix")
+.onclick = async () => {
+
+    try{
+
+        await navigator
+        .clipboard
+        .writeText(PIX_ORION);
+
+        toast(
+            "Chave PIX copiada!"
+        );
+
+    }catch{
+
+        toast(
+            "Não foi possível copiar."
+        );
+
+    }
+
+};
+
+
+/* =================================
+   PEDIDOS
+================================= */
+
+const form =
+document.getElementById("form");
+
+const modal =
+document.getElementById("modal");
+
+const orderId =
+document.getElementById("orderId");
+
+const orderInfo =
+document.getElementById("orderInfo");
+
+
+function generateId(){
+
+    return "ORION-" +
+    Math.floor(
+        100000 +
+        Math.random() * 900000
+    );
+
+}
+
+
+form.onsubmit =
+(event) => {
+
+    event.preventDefault();
+
+
+    const name =
+    document
+    .getElementById("name")
+    .value
+    .trim();
+
+
+    const discord =
+    document
+    .getElementById("discord")
+    .value
+    .trim();
+
+
+    const email =
+    document
+    .getElementById("email")
+    .value
+    .trim();
+
+
+    const notes =
+    document
+    .getElementById("notes")
+    .value
+    .trim();
+
+
+    const option =
+    product.options[
+        product.selectedIndex
+    ];
+
+
+    const order = {
+
+        id:generateId(),
+
+        name:name,
+
+        discord:discord,
+
+        email:email,
+
+        product:option.value,
+
+        price:Number(
+            option.dataset.price
+        ),
+
+        notes:notes,
+
+        status:
+        "Aguardando pagamento",
+
+        date:
+        new Date()
+        .toLocaleString("pt-BR")
+
+    };
+
+
+    const orders =
+    JSON.parse(
+        localStorage.getItem(
+            "orion_orders"
+        ) || "[]"
+    );
+
+
+    orders.push(order);
+
+
+    localStorage.setItem(
+        "orion_orders",
+        JSON.stringify(orders)
+    );
+
+
+    orderId.textContent =
+    order.id;
+
+
+    orderInfo.innerHTML =
+
+    `<strong>
+        ${order.product}
+    </strong>
+    <br>
+    Total:
+    <strong>
+        ${money(order.price)}
+    </strong>`;
+
+
+    modal.classList.add(
+        "active"
+    );
+
+};
+
+
+/* =================================
+   MODAL
+================================= */
+
+document
+.getElementById("close")
+.onclick = () => {
+
+    modal.classList.remove(
+        "active"
+    );
+
+};
+
+
+document
+.getElementById("paymentButton")
+.onclick = () => {
+
+    modal.classList.remove(
+        "active"
+    );
+
+    document
+    .getElementById("pix")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+};
+
+
+/* =================================
+   TOAST
+================================= */
+
+function toast(message){
+
+    const element =
+    document.getElementById("toast");
+
+    element.textContent =
+    message;
+
+    element.classList.add(
+        "show"
+    );
+
+
+    setTimeout(() => {
+
+        element.classList.remove(
+            "show"
+        );
+
+    },2500);
+
+}
+
+
+updatePrice();
+
+</script>
+
+</body>
+</html>

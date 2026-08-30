@@ -122,6 +122,7 @@ header{
 
 nav{
     display:flex;
+    align-items:center;
     gap:22px;
     color:#cdd2e4;
     font-size:14px;
@@ -129,6 +130,23 @@ nav{
 
 nav a:hover{
     color:var(--cyan);
+}
+
+.btn-discord-nav{
+    background:#5865F2;
+    color:white;
+    padding:8px 14px;
+    border-radius:10px;
+    font-weight:bold;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:.2s;
+}
+
+.btn-discord-nav:hover{
+    background:#4752C4;
+    color:white;
 }
 
 .menu{
@@ -202,6 +220,14 @@ nav a:hover{
 .primary{
     border:0;
     background:linear-gradient(100deg,var(--cyan),#3b82f6,var(--purple));
+}
+
+.discord-btn-large{
+    background:#5865F2;
+    border:0;
+}
+.discord-btn-large:hover{
+    background:#4752C4;
 }
 
 section{
@@ -610,6 +636,7 @@ footer{
 <a href="#planos">Planos</a>
 <a href="#comprar">Comprar</a>
 <a href="#pix">PIX</a>
+<a href="https://discord.gg/SEULINK" target="_blank" class="btn-discord-nav">💬 Entrar no Discord</a>
 </nav>
 </div>
 </header>
@@ -622,6 +649,7 @@ footer{
 <div class="buttons">
 <a class="btn primary" href="#bots">Ver bots →</a>
 <a class="btn" href="#comprar">Comprar agora</a>
+<a class="btn discord-btn-large" href="https://discord.gg/SEULINK" target="_blank">💬 Suporte no Discord</a>
 </div>
 </div>
 </section>
@@ -781,24 +809,26 @@ footer{
 <div class="section-title">
 <small>CHECKOUT</small>
 <h2>Faça seu pedido</h2>
-<p>Escolha seu produto e envie seus dados.</p>
+<p>Escolha seu produto e informe o nome do seu bot.</p>
 </div>
 <form class="checkout" id="form">
 <div class="form">
 <div class="field">
-<label>Nome</label>
-<input id="name" required placeholder="Seu nome">
+<label>Nome do Cliente</label>
+<input id="name" required placeholder="Seu nome completo">
 </div>
 <div class="field">
-<label>Discord</label>
-<input id="discord" required placeholder="seu_usuario">
+<label>Seu Usuário do Discord</label>
+<input id="discord" required placeholder="ex: usuario_discord">
 </div>
+
 <div class="field full">
-<label>E-mail</label>
-<input id="email" type="email" required placeholder="voce@email.com">
+<label>Nome Desejado para o seu Bot (ou Nickname)</label>
+<input id="botname" required placeholder="ex: Orion Guard, Bot Do Pedro, etc.">
 </div>
+
 <div class="field full">
-<label>Produto</label>
+<label>Produto Selecionado</label>
 <select id="product">
 <option value="Orion Moderation" data-price="24.35">Orion Moderation — R$ 24,35</option>
 <option value="Orion Economy" data-price="38.53">Orion Economy — R$ 38,53</option>
@@ -806,11 +836,13 @@ footer{
 <option value="Robô personalizado" data-price="45.38">Robô personalizado — R$ 45,38 (Sob consulta)</option>
 </select>
 </div>
+
 <div class="field full">
-<label>Explique o que você quer no seu bot</label>
-<textarea id="notes" placeholder="Exemplo: quero um bot de tickets, moderação, sistema de cargos, economia..."></textarea>
+<label>Detalhes Adicionais ou Comandos Desejados</label>
+<textarea id="notes" placeholder="Explique como quer as funções, cores ou avatar do bot..."></textarea>
 </div>
 </div>
+
 <div class="summary">
 <div><span>Produto</span><strong id="sumProduct">Orion Moderation</strong></div>
 <div><span>Preço</span><strong id="sumPrice">R$ 24,35</strong></div>
@@ -832,23 +864,25 @@ footer{
 <h3>Chave PIX da Orion.Bots</h3>
 <div class="pix-key" id="pixDisplay">19993788111</div>
 <button class="btn primary" id="copyPix">Copiar chave PIX</button>
-<p class="notice" style="margin-top:18px">Após realizar o pagamento, envie o comprovante junto com o número do pedido pelo suporte.</p>
+
+<div style="margin-top:25px; padding: 15px; background: rgba(88,101,242,0.1); border: 1px solid rgba(88,101,242,0.3); border-radius:15px;">
+  <p style="font-weight:bold; color: #a5b4fc;">Precisa enviar o comprovante ou tirar dúvidas?</p>
+  <p class="notice" style="margin-bottom:12px;">Entre em contato direto pelo nosso servidor do Discord para dar andamento ao seu bot.</p>
+  <a href="https://discord.gg/SEULINK" target="_blank" class="btn discord-btn-large" style="display:inline-block;">💬 Entrar no Suporte pelo Discord</a>
+</div>
+
 <div class="steps">
 <div class="step">
 <div class="number">1</div>
-<div><strong>Crie seu pedido</strong><p class="notice">Escolha o produto e informe seus dados.</p></div>
+<div><strong>Crie seu pedido</strong><p class="notice">Escolha o produto, nome do bot e dados.</p></div>
 </div>
 <div class="step">
 <div class="number">2</div>
-<div><strong>Copie a chave PIX</strong><p class="notice">Use o botão acima.</p></div>
+<div><strong>Copie o PIX</strong><p class="notice">Use o botão acima para fazer o pagamento.</p></div>
 </div>
 <div class="step">
 <div class="number">3</div>
-<div><strong>Faça o pagamento</strong><p class="notice">Realize o PIX pelo aplicativo do seu banco.</p></div>
-</div>
-<div class="step">
-<div class="number">4</div>
-<div><strong>Envie o comprovante</strong><p class="notice">Envie o comprovante e o número do pedido.</p></div>
+<div><strong>Abra o Discord</strong><p class="notice">Entre no servidor pelo botão acima e envie o comprovante.</p></div>
 </div>
 </div>
 </div>
@@ -857,7 +891,7 @@ footer{
 
 <footer>
 <div class="container footer">
-<div><strong>ORION.BOTS</strong><br>Bots para Discord.</div>
+<div><strong>ORION.BOTS</strong><br>Bots para Discord sob medida.</div>
 <div>© 2026 Orion.Bots</div>
 </div>
 </footer>
@@ -866,17 +900,21 @@ footer{
 <div class="modal-content">
 <button class="close" id="close">×</button>
 <h2>Pedido criado!</h2>
-<p class="notice">Guarde o número do seu pedido.</p>
+<p class="notice">Guarde o número do seu pedido e fale conosco no Discord.</p>
 <div class="order-id" id="orderId"></div>
 <p id="orderInfo"></p>
 <br>
-<button class="btn primary" id="paymentButton">Ir para PIX</button>
+<a href="https://discord.gg/SEULINK" target="_blank" class="btn discord-btn-large" style="width:100%; text-align:center; display:block; margin-bottom:10px;">💬 Abrir no Discord</a>
+<button class="btn primary" id="paymentButton" style="width:100%;">Ir para chave PIX</button>
 </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
+// COLOQUE A URL DO SEU WEBHOOK DO DISCORD AQUI ENTRE AS ASPAS:
+const DISCORD_WEBHOOK_URL = "SUA_URL_DO_WEBHOOK_AQUI";
+
 const PIX_ORION = "19993788111";
 const menu = document.getElementById("menu");
 const nav = document.getElementById("nav");
@@ -929,32 +967,59 @@ function generateId(){
     return "ORION-" + Math.floor(100000 + Math.random() * 900000);
 }
 
-form.onsubmit = (event) => {
+form.onsubmit = async (event) => {
     event.preventDefault();
     const name = document.getElementById("name").value.trim();
     const discord = document.getElementById("discord").value.trim();
-    const email = document.getElementById("email").value.trim();
+    const botname = document.getElementById("botname").value.trim();
     const notes = document.getElementById("notes").value.trim();
     const option = product.options[product.selectedIndex];
+    const newId = generateId();
 
     const order = {
-        id: generateId(),
+        id: newId,
         name: name,
         discord: discord,
-        email: email,
+        botname: botname,
         product: option.value,
         price: Number(option.dataset.price),
         notes: notes,
-        status: "Aguardando pagamento",
         date: new Date().toLocaleString("pt-BR")
     };
 
-    const orders = JSON.parse(localStorage.getItem("orion_orders") || "[]");
-    orders.push(order);
-    localStorage.setItem("orion_orders", JSON.stringify(orders));
+    // ENVIO DAS NOTIFICAÇÕES PARA O SEU DISCORD VIA WEBHOOK
+    if (DISCORD_WEBHOOK_URL && DISCORD_WEBHOOK_URL !== "https://discord.com/api/webhooks/1543744959226712207/2bUreAOaOBI7ytej00hfwIWuY4Huu7cmUD_X8VyYcRPGoMlAlj9KLFJdmv9WjLISDIK9") {
+        const payload = {
+            username: "Orion Vendas",
+            embeds: [{
+                title: "🚨 NOVO PEDIDO GERADO!",
+                color: 5793266,
+                fields: [
+                    { name: "📦 Pedido ID", value: order.id, inline: true },
+                    { name: "👤 Cliente", value: order.name, inline: true },
+                    { name: "💬 Discord do Cliente", value: order.discord, inline: true },
+                    { name: "🤖 Nome Desejado do Bot", value: order.botname, inline: false },
+                    { name: "🛒 Produto", value: order.product, inline: true },
+                    { name: "💰 Valor", value: money(order.price), inline: true },
+                    { name: "📝 Observações", value: order.notes || "Nenhuma", inline: false }
+                ],
+                timestamp: new Date()
+            }]
+        };
+
+        try {
+            await fetch(DISCORD_WEBHOOK_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+        } catch (e) {
+            console.error("Erro ao enviar Webhook", e);
+        }
+    }
 
     orderId.textContent = order.id;
-    orderInfo.innerHTML = `<strong>${order.product}</strong><br>Total: <strong>${money(order.price)}</strong>`;
+    orderInfo.innerHTML = `Cliente: <strong>${order.name}</strong><br>Bot: <strong>${order.botname}</strong><br>Produto: <strong>${order.product}</strong><br>Total: <strong>${money(order.price)}</strong>`;
     modal.classList.add("active");
 };
 

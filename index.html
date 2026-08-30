@@ -636,7 +636,7 @@ footer{
 <a href="#planos">Planos</a>
 <a href="#comprar">Comprar</a>
 <a href="#pix">PIX</a>
-<a href="https://discord.gg/hEcWDQm9B" target="_blank" class="btn-discord-nav">💬 Entrar no Discord</a>
+<a href="https://discord.gg/SEULINK" target="_blank" class="btn-discord-nav">💬 Entrar no Discord</a>
 </nav>
 </div>
 </header>
@@ -649,7 +649,7 @@ footer{
 <div class="buttons">
 <a class="btn primary" href="#bots">Ver bots →</a>
 <a class="btn" href="#comprar">Comprar agora</a>
-<a class="btn discord-btn-large" href="https://discord.gg/hEcWDQm9B" target="_blank">💬 Suporte no Discord</a>
+<a class="btn discord-btn-large" href="https://discord.gg/SEULINK" target="_blank">💬 Suporte no Discord</a>
 </div>
 </div>
 </section>
@@ -676,7 +676,7 @@ footer{
 </ul>
 </div>
 <div>
-<div class="price">R$ 24,35</div>
+<div class="price">R$ 14,00</div>
 <button class="btn primary buy" data-product="Orion Moderation">Comprar</button>
 </div>
 </div>
@@ -694,7 +694,7 @@ footer{
 </ul>
 </div>
 <div>
-<div class="price">R$ 38,53</div>
+<div class="price">R$ 23,00</div>
 <button class="btn primary buy" data-product="Orion Economy">Comprar</button>
 </div>
 </div>
@@ -735,7 +735,6 @@ footer{
 </ul>
 </div>
 <div>
-<!-- ALTERADO AQUI: -->
 <div class="price" style="font-size:24px;">A partir de R$ 45,38</div>
 <button class="btn primary buy" data-product="Robô personalizado">Quero meu robô →</button>
 </div>
@@ -795,8 +794,8 @@ footer{
 </tr>
 <tr>
 <td>Preço</td>
-<td>R$ 24,35</td>
-<td>R$ 38,53</td>
+<td>R$ 14,00</td>
+<td>R$ 23,00</td>
 <td>R$ 70,45</td>
 </tr>
 </tbody>
@@ -831,10 +830,10 @@ footer{
 <div class="field full">
 <label>Produto Selecionado</label>
 <select id="product">
-<option value="Orion Moderation" data-price="24.35">Orion Moderation — R$ 24,35</option>
-<option value="Orion Economy" data-price="38.53">Orion Economy — R$ 38,53</option>
+<option value="Orion Moderation" data-price="14.00">Orion Moderation — R$ 14,00</option>
+<option value="Orion Economy" data-price="23.00">Orion Economy — R$ 23,00</option>
 <option value="Orion Premium" data-price="70.45">Orion Premium (Completo) — R$ 70,45</option>
-<option value="Robô personalizado" data-price="45.38">Robô personalizado — R$ 45,38 (Sob consulta)</option>
+<option value="Robô personalizado" data-price="45.38">Robô personalizado — A partir de R$ 45,38 (Sob consulta)</option>
 </select>
 </div>
 
@@ -846,8 +845,8 @@ footer{
 
 <div class="summary">
 <div><span>Produto</span><strong id="sumProduct">Orion Moderation</strong></div>
-<div><span>Preço</span><strong id="sumPrice">R$ 24,35</strong></div>
-<div class="total"><span>Total</span><strong id="sumTotal">R$ 24,35</strong></div>
+<div><span>Preço</span><strong id="sumPrice">R$ 14,00</strong></div>
+<div class="total"><span>Total</span><strong id="sumTotal">R$ 14,00</strong></div>
 </div>
 <button class="btn primary" style="width:100%;margin-top:16px">Gerar pedido →</button>
 </form>
@@ -863,13 +862,13 @@ footer{
 </div>
 <div class="card pix">
 <h3>Chave PIX da Orion.Bots</h3>
-<div class="pix-key" id="pixDisplay">df83bf36-7090-47d6-aec2-649c4c498580</div>
+<div class="pix-key" id="pixDisplay">SUA_CHAVE_PIX_AQUI</div>
 <button class="btn primary" id="copyPix">Copiar chave PIX</button>
 
 <div style="margin-top:25px; padding: 15px; background: rgba(88,101,242,0.1); border: 1px solid rgba(88,101,242,0.3); border-radius:15px;">
   <p style="font-weight:bold; color: #a5b4fc;">Precisa enviar o comprovante ou tirar dúvidas?</p>
   <p class="notice" style="margin-bottom:12px;">Entre em contato direto pelo nosso servidor do Discord para dar andamento ao seu bot.</p>
-  <a href="https://discord.gg/hEcWDQm9B" target="_blank" class="btn discord-btn-large" style="display:inline-block;">💬 Entrar no Suporte pelo Discord</a>
+  <a href="https://discord.gg/SEULINK" target="_blank" class="btn discord-btn-large" style="display:inline-block;">💬 Entrar no Suporte pelo Discord</a>
 </div>
 
 <div class="steps">
@@ -905,7 +904,7 @@ footer{
 <div class="order-id" id="orderId"></div>
 <p id="orderInfo"></p>
 <br>
-<a href="https://discord.gg/hEcWDQm9B" target="_blank" class="btn discord-btn-large" style="width:100%; text-align:center; display:block; margin-bottom:10px;">💬 Abrir no Discord</a>
+<a href="https://discord.gg/SEULINK" target="_blank" class="btn discord-btn-large" style="width:100%; text-align:center; display:block; margin-bottom:10px;">💬 Abrir no Discord</a>
 <button class="btn primary" id="paymentButton" style="width:100%;">Ir para chave PIX</button>
 </div>
 </div>
@@ -913,10 +912,9 @@ footer{
 <div class="toast" id="toast"></div>
 
 <script>
-// COLOQUE A URL DO SEU WEBHOOK DO DISCORD AQUI ENTRE AS ASPAS:
-const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1543744959226712207/2bUreAOaOBI7ytej00hfwIWuY4Huu7cmUD_X8VyYcRPGoMlAlj9KLFJdmv9WjLISDIK9";
+const DISCORD_WEBHOOK_URL = "SUA_URL_DO_WEBHOOK_AQUI";
+const PIX_ORION = "SUA_CHAVE_PIX_AQUI";
 
-const PIX_ORION = "df83bf36-7090-47d6-aec2-649c4c498580";
 const menu = document.getElementById("menu");
 const nav = document.getElementById("nav");
 menu.onclick = () => { nav.classList.toggle("open"); };
@@ -988,8 +986,7 @@ form.onsubmit = async (event) => {
         date: new Date().toLocaleString("pt-BR")
     };
 
-    // ENVIO DAS NOTIFICAÇÕES PARA O SEU DISCORD VIA WEBHOOK
-    if (DISCORD_WEBHOOK_URL && DISCORD_WEBHOOK_URL !== "https://discord.com/api/webhooks/1543744959226712207/2bUreAOaOBI7ytej00hfwIWuY4Huu7cmUD_X8VyYcRPGoMlAlj9KLFJdmv9WjLISDIK9") {
+    if (DISCORD_WEBHOOK_URL && DISCORD_WEBHOOK_URL !== "SUA_URL_DO_WEBHOOK_AQUI") {
         const payload = {
             username: "Orion Vendas",
             embeds: [{

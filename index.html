@@ -4,64 +4,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Título principal que aparece na busca do Google -->
-    <title>Orion Bots - Automação e Bots</title>
+    <!-- Título otimizado para o Google -->
+    <title>Orion Bots - Automação e Bots Personalizados</title>
     
-    <!-- Descrição que aparece embaixo do título no Google -->
-    <meta name="description" content="Orion Bots: Soluções em automação, bots para Discord e ferramentas inteligentes com recursos sob medida.">
+    <!-- Descrição para aparecer nas buscas do Google -->
+    <meta name="description" content="Orion Bots: Soluções completas em automação, bots para Discord e sistemas inteligentes sob medida.">
     
+    <!-- Tag de Verificação do Google Search Console (Substitua o VALOR_AQUI pela sua tag quando tiver) -->
+    <!-- <meta name="google-site-verification" content="SEU_CODIGO_DE_VERIFICACAO_AQUI" /> -->
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f9;
-            color: #333;
+            padding: 0;
         }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
         .container {
             max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%;
+            background-color: #1e293b;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid #334155;
         }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
         h1 {
-            color: #2c3e50;
+            color: #38bdf8;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
+
+        p.subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
         .notice-box {
-            background-color: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
+            background-color: rgba(234, 179, 8, 0.1);
+            border-left: 4px solid #eab308;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 6px;
         }
+
         .notice-box h3 {
-            margin-top: 0;
-            color: #856404;
+            color: #facc15;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .notice-box p {
+            color: #e2e8f0;
+            margin-bottom: 12px;
+        }
+
+        .notice-box ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            color: #cbd5e1;
+        }
+
+        .notice-box li {
+            margin-bottom: 8px;
+        }
+
+        .contact-section {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #38bdf8;
+            color: #0f172a;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #0284c7;
+            color: #ffffff;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #64748b;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- O título principal visível na página -->
-        <h1>Orion Bots</h1>
-        <p>Bem-vindo ao site oficial do <strong>Orion Bots</strong>! Aqui você encontra as melhores soluções em automação e bots para o seu servidor ou empresa.</p>
+        <header>
+            <h1>Orion Bots</h1>
+            <p class="subtitle">Sistemas de automação inteligente e bots personalizados.</p>
+        </header>
 
-        <!-- Bloco informando sobre os limites do robô personalizado -->
-        <div class="notice-box">
-            <h3>⚠️ Informação Importante sobre Bots Personalizados</h3>
-            <p>Nossos bots e automações personalizadas contam com <strong>limites operacionais e de requisições</strong> para garantir a estabilidade, segurança e alto desempenho de todos os usuários.</p>
-            <ul>
-                <li><strong>Taxa de Requisições (Rate Limit):</strong> Limite de comandos por minuto para evitar sobrecarga.</li>
-                <li><strong>Capacidade do Plano:</strong> A quantidade de comandos, execuções diárias ou conexões simultâneas varia conforme a infraestrutura do bot.</li>
-                <li><strong>Termos de Uso:</strong> O uso excessivo ou em desacordo com nossas diretrizes poderá resultar na limitação automática das funções.</li>
-            </ul>
-        </div>
+        <main>
+            <p>Bem-vindo ao site oficial do <strong>Orion Bots</strong>. Desenvolvemos soluções em robôs e automações para otimizar suas tarefas no Discord, redes sociais e sistemas web.</p>
 
-        <p>Para dúvidas sobre aumentos de limites ou planos dedicados sem restrições, entre em contato conosco!</p>
+            <!-- BLOCO COM A INFORMAÇÃO DOS LIMITES DO ROBÔ -->
+            <section class="notice-box">
+                <h3>⚠️ Limites do Robô Personalizado</h3>
+                <p>Para manter a estabilidade, alta velocidade e segurança da nossa infraestrutura, os bots personalizados contam com <strong>limites de operação</strong>:</p>
+                <ul>
+                    <li><strong>Taxa de Requisições (Rate Limit):</strong> Há um limite de comandos executados por minuto para evitar congestionamentos.</li>
+                    <li><strong>Capacidade Diária:</strong> O volume total de execuções simultâneas ou diárias varia de acordo com o plano contratado.</li>
+                    <li><strong>Proteção contra Spam:</strong> O envio abusivo de solicitações ativará o bloqueio temporário do robô para prevenção de falhas.</li>
+                </ul>
+            </section>
+
+            <div class="contact-section">
+                <h2>Precisa de limites estendidos?</h2>
+                <p>Se você necessita de uma solução dedicada sem restrições operacionais, entre em contato com a nossa equipe.</p>
+                <a href="#" class="btn">Falar com o Suporte</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Orion Bots. Todos os direitos reservados.</p>
+        </footer>
     </div>
 
 </body>

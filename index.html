@@ -4,84 +4,181 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Título otimizado para o Google -->
-    <title>Orion Bots - Automação e Bots Personalizados</title>
-    
-    <!-- Descrição para aparecer nas buscas do Google -->
-    <meta name="description" content="Orion Bots: Soluções completas em automação, bots para Discord e sistemas inteligentes sob medida.">
-    
-    <!-- Tag de Verificação do Google Search Console (Substitua o VALOR_AQUI pela sua tag quando tiver) -->
-    <!-- <meta name="google-site-verification" content="SEU_CODIGO_DE_VERIFICACAO_AQUI" /> -->
+    <!-- Configurações de SEO para o Google -->
+    <title>Orion Bots - Automações & Bots Personalizados</title>
+    <meta name="description" content="Orion Bots oferece soluções completas de automação, bots para Discord e sistemas inteligentes sob medida para servidores e empresas.">
+    <meta name="keywords" content="Orion Bots, Bot Discord, Automação, Bots Personalizados, Python Bot">
+    <meta name="author" content="Orion Bots">
+
+    <!-- Meta Tags para Discord / WhatsApp / Redes Sociais (Open Graph) -->
+    <meta property="og:title" content="Orion Bots - Automações & Bots Personalizados">
+    <meta property="og:description" content="Sistemas de automação inteligente e bots customizados para suas necessidades.">
+    <meta property="og:type" content="website">
 
     <style>
+        /* Reset e Estilos Globais */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0f172a;
             color: #f8fafc;
             line-height: 1.6;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
 
-        .container {
-            max-width: 800px;
-            width: 100%;
+        a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Cabecalho e Navegacao */
+        header {
             background-color: #1e293b;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid #334155;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* Secao Principal (Hero) */
+        .hero {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #38bdf8;
+            color: #0f172a;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #0284c7;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* Containers de Conteudo */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Seção de Recursos (Cards) */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: #1e293b;
+            padding: 25px;
+            border-radius: 10px;
             border: 1px solid #334155;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        h1 {
+        .card h3 {
             color: #38bdf8;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
         }
 
-        p.subtitle {
-            color: #94a3b8;
-            font-size: 1.1rem;
+        .card p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
         }
 
+        /* Bloco de Alerta / Limites do Bot */
         .notice-box {
             background-color: rgba(234, 179, 8, 0.1);
-            border-left: 4px solid #eab308;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 6px;
+            border-left: 5px solid #eab308;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 50px 0;
         }
 
-        .notice-box h3 {
+        .notice-box h2 {
             color: #facc15;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .notice-box p {
             color: #e2e8f0;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .notice-box ul {
-            list-style-type: disc;
-            padding-left: 25px;
+            padding-left: 20px;
             color: #cbd5e1;
         }
 
@@ -89,71 +186,93 @@
             margin-bottom: 8px;
         }
 
-        .contact-section {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #334155;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #38bdf8;
-            color: #0f172a;
-            padding: 12px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: background-color 0.2s ease;
-        }
-
-        .btn:hover {
-            background-color: #0284c7;
-            color: #ffffff;
-        }
-
+        /* Rodape */
         footer {
+            background-color: #090d16;
+            border-top: 1px solid #1e293b;
             text-align: center;
-            margin-top: 30px;
+            padding: 30px 20px;
+            margin-top: 60px;
             color: #64748b;
             font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .navbar { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- CABEÇALHO COM NAVEGAÇÃO -->
+    <header>
+        <div class="navbar">
+            <div class="logo">Orion Bots</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#recursos">Recursos</a></li>
+                <li><a href="#limites">Limites & Termos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- SEÇÃO HERO (INÍCIO) -->
+    <section class="hero" id="inicio">
+        <h1>Automações Inteligentes com <span>Orion Bots</span></h1>
+        <p>Desenvolvemos bots personalizados e soluções de automação sob medida para otimizar seus processos, servidores e atendimento.</p>
+        <a href="#contato" class="btn">Solicitar Bot Personalizado</a>
+    </section>
+
     <div class="container">
-        <header>
-            <h1>Orion Bots</h1>
-            <p class="subtitle">Sistemas de automação inteligente e bots personalizados.</p>
-        </header>
 
-        <main>
-            <p>Bem-vindo ao site oficial do <strong>Orion Bots</strong>. Desenvolvemos soluções em robôs e automações para otimizar suas tarefas no Discord, redes sociais e sistemas web.</p>
+        <!-- SEÇÃO DE RECURSOS / SERVIÇOS -->
+        <section id="recursos">
+            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 10px;">O que oferecemos</h2>
+            <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Conheça as principais funcionalidades dos nossos sistemas.</p>
 
-            <!-- BLOCO COM A INFORMAÇÃO DOS LIMITES DO ROBÔ -->
-            <section class="notice-box">
-                <h3>⚠️ Limites do Robô Personalizado</h3>
-                <p>Para manter a estabilidade, alta velocidade e segurança da nossa infraestrutura, os bots personalizados contam com <strong>limites de operação</strong>:</p>
-                <ul>
-                    <li><strong>Taxa de Requisições (Rate Limit):</strong> Há um limite de comandos executados por minuto para evitar congestionamentos.</li>
-                    <li><strong>Capacidade Diária:</strong> O volume total de execuções simultâneas ou diárias varia de acordo com o plano contratado.</li>
-                    <li><strong>Proteção contra Spam:</strong> O envio abusivo de solicitações ativará o bloqueio temporário do robô para prevenção de falhas.</li>
-                </ul>
-            </section>
-
-            <div class="contact-section">
-                <h2>Precisa de limites estendidos?</h2>
-                <p>Se você necessita de uma solução dedicada sem restrições operacionais, entre em contato com a nossa equipe.</p>
-                <a href="#" class="btn">Falar com o Suporte</a>
+            <div class="features">
+                <div class="card">
+                    <h3>🤖 Bots para Discord</h3>
+                    <p>Sistemas de moderação, economia, tickets de suporte, automação de cargos e integração com bancos de dados.</p>
+                </div>
+                <div class="card">
+                    <h3>⚡ Automação de Tarefas</h3>
+                    <p>Robôs para raspagem de dados (web scraping), envio automático de mensagens e integração com APIs externas.</p>
+                </div>
+                <div class="card">
+                    <h3>⚙️ Desenvolvimento Sob Medida</h3>
+                    <p>Criamos ferramentas exatamente de acordo com a sua necessidade e regras de negócio específicas.</p>
+                </div>
             </div>
-        </main>
+        </section>
 
-        <footer>
-            <p>&copy; 2026 Orion Bots. Todos os direitos reservados.</p>
-        </footer>
+        <!-- AVISO DE LIMITES DO ROBÔ PERSONALIZADO -->
+        <section class="notice-box" id="limites">
+            <h2>⚠️ Limites do Robô Personalizado</h2>
+            <p>Para garantir a estabilidade do servidor, alto desempenho e segurança contra falhas, todos os robôs operam sob regras de uso e limites operacionais:</p>
+            <ul>
+                <li><strong>Taxa de Requisições (Rate Limit):</strong> Existe um limite de comandos executados por minuto para evitar congestionamentos na API.</li>
+                <li><strong>Capacidade Diária:</strong> A quantidade máxima de interações ou requisições simultâneas varia conforme a infraestrutura do seu plano.</li>
+                <li><strong>Uso Justo & Anti-Spam:</strong> O envio abusivo de solicitações ou tentativas de sobrecarregar o robô ativarão proteções automáticas de bloqueio temporário.</li>
+            </ul>
+        </section>
+
+        <!-- SEÇÃO DE CONTATO -->
+        <section id="contato" style="text-align: center; background-color: #1e293b; padding: 40px; border-radius: 10px; border: 1px solid #334155;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 15px;">Dúvidas ou Planos Dedicados?</h2>
+            <p style="color: #cbd5e1; margin-bottom: 25px;">Se você precisa de uma infraestrutura com limites expandidos ou suporte direto, entre em contato.</p>
+            <a href="https://discord.com" target="_blank" class="btn">Entrar em Contato</a>
+        </section>
+
     </div>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>&copy; 2026 Orion Bots. Todos os direitos reservados.</p>
+    </footer>
 
 </body>
 </html>
